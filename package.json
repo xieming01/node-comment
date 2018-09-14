@@ -1,0 +1,47 @@
+{
+  "name": "react-project",
+  "version": "1.0.0",
+  "private": true,
+  "repository": "https://github.com/Tomny2016/react-project.git",
+  "author": "PresByter <presbyter163@163.com>",
+  "license": "MIT",
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "start": "webpack-dev-server --open --config config/webpack.dev.js",
+    "watch": "webpack --watch",
+    "server": "node server.js",
+    "build": "webpack --mode production --config ./config/webpack.prod.js"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "cross-env": "^5.2.0",
+    "css-loader": "^1.0.0",
+    "file-loader": "^2.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "jsx-loader": "^0.13.2",
+    "style-loader": "^0.23.0",
+    "url-loader": "^1.1.1",
+    "webpack": "^4.18.0",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8",
+    "webpack-merge": "^4.1.4"
+  },
+  "dependencies": {
+    "clean-webpack-plugin": "^0.1.19",
+    "install": "^0.12.1",
+    "lodash": "^4.17.11",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "react-hot-loader": "^4.3.6",
+    "webpack-dev-middleware": "^3.3.0",
+    "xml-loader": "^1.2.1"
+  }
+}

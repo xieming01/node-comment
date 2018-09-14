@@ -1,0 +1,10 @@
+body {
+  color: #fff;
+  background-color: aquamarine;
+  font-size: 40px;
+}
+
+.hello {
+  color: rgb(12, 9, 240);
+  background: url('./g.jpg') center center no-repeat;
+}
