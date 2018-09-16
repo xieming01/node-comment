@@ -1,3 +1,6 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 import './iconfont/iconfont.css';
 import './style.css';
 import Logo from './g.jpg'
@@ -54,6 +57,11 @@ fetch('https://jsonplaceholder.typicode.com/users')
   })
   .catch(error => console.error('Something went wrong when fetching this data: ', error))
 
+  // ReactDOM.render(
+  //   <h1>Hello, world!</h1>,
+  //   document.getElementById('root')
+  // );
+console.log('111111111111111',ReactDOM)
 
 if (module.hot) {
   module.hot.accept('./print.js', function () {
