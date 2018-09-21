@@ -1,6 +1,5 @@
 // webpack.base.conf.js 文件
 const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const DIST_PATH = path.resolve(__dirname, '../dist');
 const APP_PATH = path.resolve(__dirname, '../src');
 
@@ -18,11 +17,14 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
+        exclude: /(node_modules|bower_components)/,
         use: [
           {
             loader: 'babel-loader',
             // 开启缓存功能
             options: {
+              // presets: ['@babel/preset-env'],
+              // plugins: [require('@babel/plugin-proposal-object-rest-spread')],
               cacheDirectory: true
             }
           },
@@ -64,7 +66,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
+              modules: true,//可以写成styles.name的样式
               sourceMap: true,
               localIdentName: '[name]__[local]--[hash:base64:5]',
             },

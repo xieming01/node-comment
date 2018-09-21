@@ -10,8 +10,7 @@ const webpack = require('webpack');
 module.exports = merge(baseWebpackConfig, {
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'public/index.html',
-      // inject: 'body',
+      // template: 'public/index.html',//可以要也可以不要
       title: 'PresByter',
       minify: {
         removeComments: true,
@@ -32,7 +31,7 @@ module.exports = merge(baseWebpackConfig, {
 
   ],
   output: {
-    filename: "js/[name].[chunkhash:16].js",
+    filename: "js/[name].[chunkhash].js",
   },
   optimization: {
     // js 模块分割
