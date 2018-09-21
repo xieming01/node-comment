@@ -24,6 +24,7 @@ module.exports = merge(baseWebpackConfig, {
     }),
     // 热更新
     new webpack.HotModuleReplacementPlugin(),
+    // ["import", { libraryName: "antd", style: true }]
 
   ],
   devServer: {

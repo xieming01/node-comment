@@ -1,5 +1,6 @@
 // webpack.base.conf.js 文件
 const path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const DIST_PATH = path.resolve(__dirname, '../dist');
 const APP_PATH = path.resolve(__dirname, '../src');
 
@@ -18,7 +19,13 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         use: [
-          { loader: 'babel-loader' },
+          {
+            loader: 'babel-loader',
+            // 开启缓存功能
+            options: {
+              cacheDirectory: true
+            }
+          },
           {
             loader: 'cache-loader'
           }
@@ -27,16 +34,40 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        use: ['style-loader', 'css-loader',],
+      },
+      {
+        test: /\.less$/,
         use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
           {
-            loader: "style-loader" //在html中插入<style>标签
-          },
-          {
-            loader: "css-loader",//获取引用资源，如@import,url()
-            // 可以在 import Styles from "../*.css" 以这样的内联的方式使用
+            loader: "postcss-loader",
             options: {
-              modules: true
+              plugins: [
+                require('autoprefixer')({
+                  browsers: ['last 5 version']
+                })
+              ]
             }
+          },
+          // javascriptEnabled: true  ------  在less里面可以使用JavaScript表达式
+          { loader: 'less-loader', options: { javascriptEnabled: true } },
+        ],
+        // 切记这个地方一定要引入antd，文档上没有写入但是一定要因引进去，切记切记
+        include: [/antd/],
+      },
+      {
+        test: /\.less$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              sourceMap: true,
+              localIdentName: '[name]__[local]--[hash:base64:5]',
+            },
           },
           {
             loader: "postcss-loader",
@@ -47,26 +78,10 @@ module.exports = {
                 })
               ]
             }
-          }
-        ]
-      },
-      {
-        test: /\.less$/,
-        use: [
-          { loader: "style-loader" },
-          { loader: "css-loader" },
-          {
-            loader: "postcss-loader",//自动加前缀
-            options: {
-              plugins: [
-                require('autoprefixer')({
-                  browsers: ['last 5 version']
-                })
-              ]
-            }
           },
-          { loader: "less-loader" }
-        ]
+          { loader: 'less-loader', options: { javascriptEnabled: true } },
+        ],
+        exclude: [/antd/],
       },
       {
         test: /\.scss$/,

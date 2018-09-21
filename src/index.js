@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDom from "react-dom";
 import { Button, Switch } from 'antd';
-import 'antd/lib/button/style/css';
-import styles from './index.css'
+// import 'antd/lib/button/style/css';
+import styles from './index.less'
 import Pic from './g.jpg'
 
 console.log(22)
