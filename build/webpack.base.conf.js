@@ -94,10 +94,10 @@ module.exports = {
           },
           { loader: "sass-loader" },
           {
-            loader: "postcss-loader",
+            loader: "postcss-loader", //将 CSS 解析成抽象语法树
             options: {
               plugins: [
-                require('autoprefixer')({
+                require('autoprefixer')({  //postcss是一个平台，我们能够开发一些插件，来处理我们的CSS
                   browsers: ['last 5 version']
                 })
               ]
