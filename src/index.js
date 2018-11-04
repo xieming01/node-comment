@@ -2,11 +2,12 @@ import React from "react";
 import ReactDom from "react-dom";
 import { Button, Switch } from 'antd';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
+import {Provider} from 'react-redux';
 import Routes from './routes'
 import styles from './index.less'
 import Pic from './assets/g.jpg'
 
+import store from './Store.js';
 
 // console.log(22)
 // TODO:你好
@@ -35,8 +36,8 @@ class App extends React.Component{
   }
 }
 ReactDom.render(
-  <div>
+  <Provider store={store}>
     <App />
-  </div>,
+  </Provider>,
   document.getElementById("root")
 );
