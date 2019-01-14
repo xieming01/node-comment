@@ -1,43 +1,19 @@
-import React from "react";
-import ReactDom from "react-dom";
-import { Button, Switch } from 'antd';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import {Provider} from 'react-redux';
-import Routes from './routes'
-import styles from './index.less'
-import Pic from './assets/g.jpg'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import RouterWrap from './router'
+import { Provider } from 'react-redux'
+import store from './store'
+ 
+ReactDOM.render(
+    <div>
+        <Provider store={store}>
 
-import store from './Store.js';
+            <RouterWrap/>
 
-// console.log(22)
-// TODO:你好
-const Div = document.createElement("div");
-Div.setAttribute("id", "root")
-document.body.appendChild(Div)
-/**
- *
- *
- * @class App
- * @extends {React.Component}
- */
-class App extends React.Component{
-  render(){
-    return (
-      <div>
-        <h1 className={styles.green}>hello, world!</h1>
-        <img src={Pic}></img>
-        <Button type="primary">Primary</Button>
-        <Switch defaultChecked />
-        <Router>
-          <Routes />
-        </Router>
-      </div>
-    )
-  }
-}
-ReactDom.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById("root")
-);
+        </Provider>
+
+    </div>,
+    document.getElementById('root')
+)
+ 
+console.log(store.getState())
