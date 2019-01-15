@@ -2,7 +2,7 @@ const path = require('path');    //#nodejs内置模块
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const webpack = require('webpack')
-// let ExtractTextPlugin = require('extract-text-webpack-plugin')
+let ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   mode: 'development',                                   //# webpack4.x必须定义
@@ -12,7 +12,8 @@ module.exports = {
     filename: '[hash:6].[name].js'
   },
   devServer: {                                          //# 配置webpack-dev-server
-    contentBase: path.join(__dirname, 'dist'),           
+    contentBase: path.join(__dirname, 'dist'), 
+    historyApiFallback: true,          
     compress: true,
     port: 3000,
     inline: true,
@@ -44,79 +45,79 @@ module.exports = {
           }
         }
       },
-      {
-        test: /\.css$/,
-        use: [
-            {
-                loader: "style-loader" //在html中插入<style>标签
-            },
-            {
-                loader: "css-loader",//获取引用资源，如@import,url()
-                options: {
-                    modules: true,//启用css modules
-                    localIdentName: '[name__[local]--[hash:base64:5]]'//指定css的类名格式，避免全局污染
-                }
-            },
-            {
-                loader: "postcss-loader",
-                options: {
-                    plugins:[
-                        require('autoprefixer')({
-                            browsers:['last 5 version']
-                        })
-                    ]
-                }
-            }
-        ]
-    },
+    //   {
+    //     test: /\.css$/,
+    //     use: [
+    //         {
+    //             loader: "style-loader" //在html中插入<style>标签
+    //         },
+    //         {
+    //             loader: "css-loader",//获取引用资源，如@import,url()
+    //             options: {
+    //                 modules: true,//启用css modules
+    //                 localIdentName: '[name__[local]--[hash:base64:5]]'//指定css的类名格式，避免全局污染
+    //             }
+    //         },
+    //         {
+    //             loader: "postcss-loader",
+    //             options: {
+    //                 plugins:[
+    //                     require('autoprefixer')({
+    //                         browsers:['last 5 version']
+    //                     })
+    //                 ]
+    //             }
+    //         }
+    //     ]
+    // },
+    // // {
+    // //     test: /\.scss$|\.less$/,
+    // //     loader: "css-loader!style-loader!less-loader!sass-loader?sourceMap!postcss-loader"
+    // // },
     // {
-    //     test: /\.scss$|\.less$/,
-    //     loader: "css-loader!style-loader!less-loader!sass-loader?sourceMap!postcss-loader"
+    //     test:/\.less$/,
+    //     use: [
+    //         {
+    //             loader: "style-loader"
+    //         },
+    //         {
+    //             loader: "css-loader",
+    //             options: {
+    //                 importLoaders:2
+    //             }
+    //         },
+    //         {
+    //             loader: "postcss-loader",//自动加前缀
+    //             options: {
+    //                 plugins:[
+    //                     require('autoprefixer')({
+    //                         browsers:['last 5 version']
+    //                     })
+    //                 ]
+    //             }
+
+    //         },
+    //         {
+    //             loader: "less-loader"
+    //         }
+    //     ]
     // },
     {
-        test:/\.less$/,
-        use: [
-            {
-                loader: "style-loader"
-            },
-            {
-                loader: "css-loader",
-                options: {
-                    importLoaders:2
-                }
-            },
-            {
-                loader: "postcss-loader",//自动加前缀
-                options: {
-                    plugins:[
-                        require('autoprefixer')({
-                            browsers:['last 5 version']
-                        })
-                    ]
-                }
-
-            },
-            {
-                loader: "less-loader"
-            }
-        ]
-    },
-    // {
-    //     test: /\.css$/,
-    //     use: ExtractTextPlugin.extract({
-    //       fallback: "style-loader",
-    //       use: "css-loader",
-    //       filename:'[hash:6].[name].css'
-    //     })
-    //   },  {
-    //     test: /\.szcss$/,
-    //     use: ExtractTextPlugin.extract({
-    //       fallback: 'style-loader',
-    //       //如果需要，可以在 sass-loader 之前将 resolve-url-loader 链接进来
-    //       use: ['css-loader', 'less-loader'],
-    //       filename:'[hash:6].[name].css'
-    //     })
-    //   },
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader",
+          // filename:'[hash:6].[name].css'
+        })
+      },  {
+        test: /\.less$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          //如果需要，可以在 sass-loader 之前将 resolve-url-loader 链接进来
+          use: ['css-loader', 'less-loader'],
+          // filename:'[hash:6].[name].css'
+        })
+      },
     // {
     //   test:/\.scss$/,
     //   use:[
@@ -166,6 +167,6 @@ module.exports = {
       inject: 'body',
     }),
     new webpack.HotModuleReplacementPlugin(),//热加载插件
-    // new ExtractTextPlugin("styles.css"),
+    new ExtractTextPlugin("styles.css"),
   ]
 };
