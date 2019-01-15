@@ -33,7 +33,7 @@ class Good extends Component {
     render() {
         var listItem = []
         var { currentPage } = this.state
-        var listArr = this.props.data.result.length ? this.props.data.result : []
+        var listArr = (this.props.data.result && this.props.data.result.length) ? this.props.data.result : []
         var img_url_path = localStorage.getItem('img_url_path')
         // var pageNum = ((listArr.length + 1)/10 === 0)&&listArr.length? parseInt((listArr.length + 1)/10, 10) :  parseInt((listArr.length + 1)/10, 10) +1;
         if(listArr.length) {
