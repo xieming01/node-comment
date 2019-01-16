@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import './head.less'
 import png from '../../img/rd.jpg'
 import { myAxiosGet } from '../axios/index'
-import MessageSvg from '../../img/cnodejs_light.svg'
+import MessageSvg from '../../img/sign.png'
 const Search = Input.Search
 // var is_clcik = [1,0,0,0]
 class Header extends Component {

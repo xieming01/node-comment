@@ -3,7 +3,7 @@ const path = require('path')
 
 module.exports = {
     entry:{
-        react:['react','react-dom','antd','react-router-dom','react-redux']
+        react:['react','react-dom','antd']
     },
     output:{
         path:path.resolve(__dirname,'vendor'),

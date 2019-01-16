@@ -19,6 +19,7 @@ module.exports = {                                   //# webpack4.x必须定义
     inline: true,
     hot: true,
     publicPath: '/',
+    // open: true,
   },
 
   resolve: {
@@ -29,15 +30,15 @@ module.exports = {                                   //# webpack4.x必须定义
     // },
     modules: [path.resolve(__dirname, 'node_modules')]
   },
-  externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM',
-    // 提出ant design的公共资源
-    'antd': 'antd',
-  },
+  // externals: {
+  //   'react': 'React',
+  //   'react-dom': 'ReactDOM',
+  //   // 提出ant design的公共资源
+  //   'antd': 'antd',
+  // },
     devtool: 'cheap-module-source-map',
     optimization: {
-      minimize: true,
+      // minimize: true,
       splitChunks: {
           cacheGroups: {
               commons: {
@@ -56,7 +57,7 @@ module.exports = {                                   //# webpack4.x必须定义
           }
       }
   },
-  devtool: 'cheap-module-source-map',
+  devtool: false,
   module: {                                            
     rules: [                                           //# webpack4.x不再使用loaders 
       {                                                //# 改为rules + use
