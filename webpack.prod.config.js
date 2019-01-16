@@ -1,10 +1,10 @@
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const UglifyJsPlugin = require("uglifyes-webpack-plugin")
 
 module.exports = {
     output: {
         filename: 'bundle.min.js',
     },
     plugins: [
-        new UglifyJSPlugin({sourceMap: true})
+        new UglifyJsPlugin()
     ]
 } 

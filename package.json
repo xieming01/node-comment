@@ -40,6 +40,8 @@
     "redux-thunk": "^2.3.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "uglify-js-es6": "^2.8.9",
+    "uglifyes-webpack-plugin": "^0.4.3",
     "uglifyjs-webpack-plugin": "^2.1.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.28.4",
@@ -50,7 +52,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server  --mode development",
     "build-development": "cross-env NODE_ENV=development webpack --mode development",
-    "build-production": "cross-env NODE_ENV=production webpack --mode development",
+    "build-production": "cross-env NODE_ENV=production webpack --mode production",
     "build-vendor": "webpack --config webpack.react.config.js --mode development",
     "test": "mocha --compilers js:babel-register --require ./test/test_helper.js --recursive ./test",
     "watch": "webpack --colors --progress --watch"
