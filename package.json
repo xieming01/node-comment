@@ -19,6 +19,8 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^1.0.0",
+    "copy-webpack-plugin": "^4.6.0",
+    "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
     "echarts": "^4.2.0-rc.2",
     "echarts-for-react": "^2.0.15-beta.0",
@@ -38,14 +40,20 @@
     "redux-thunk": "^2.3.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "uglifyjs-webpack-plugin": "^2.1.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.28.4",
     "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "webpack-merge": "^4.2.1"
   },
   "scripts": {
-    "start": "webpack-dev-server --color --progress --watch --open --mode development",
-    "build": "webpack --colors --progress --mode production"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server  --mode development",
+    "build-development": "cross-env NODE_ENV=development webpack --mode development",
+    "build-production": "cross-env NODE_ENV=production webpack --mode development",
+    "build-vendor": "webpack --config webpack.react.config.js --mode development",
+    "test": "mocha --compilers js:babel-register --require ./test/test_helper.js --recursive ./test",
+    "watch": "webpack --colors --progress --watch"
   },
   "repository": {
     "type": "git",
