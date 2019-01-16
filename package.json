@@ -57,13 +57,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Tomny2016/react-project.git"
+    "url": "git+https://github.com/xieming01/node-comment.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Tomny2016/react-project/issues"
+    "url": "https://github.com/xieming01/node-comment"
   },
-  "homepage": "https://github.com/Tomny2016/react-project#readme"
+  "homepage": "https://github.com/xieming01/node-comment#readme"
 }
