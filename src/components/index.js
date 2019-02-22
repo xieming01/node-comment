@@ -11,7 +11,9 @@ import allDetail from './subpage/allContent/detail'
 // import goodDeatil from './subpage/goodContent/detail'
 
 class Components extends Component {
+     
     render() {
+        console.log(this.props)
         return(
             <div style={{ "display": "flex", "minHeight": "100vh", "flexDirection": "column",'backgroundColor': '#eee' }}>
                 <Head location={this.props.location} history={this.props.history} match={this.props.match} />

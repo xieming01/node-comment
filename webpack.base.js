@@ -36,7 +36,7 @@ module.exports = {                                   //# webpack4.x必须定义
   //   // 提出ant design的公共资源
   //   'antd': 'antd',
   // },
-    devtool: 'cheap-module-source-map',
+    devtool: 'source-map',
     optimization: {
       // minimize: true,
       splitChunks: {
@@ -57,7 +57,6 @@ module.exports = {                                   //# webpack4.x必须定义
           }
       }
   },
-  devtool: false,
   module: {                                            
     rules: [                                           //# webpack4.x不再使用loaders 
       {                                                //# 改为rules + use

@@ -3,6 +3,7 @@ import { Radio, Popover, Button, } from 'antd';
 import TimePickerView from "../datePicker/index";
 import AlertManage from '../AlertManage/index'
 import FlowStatus from '../FlowStatus/index'
+import SnakeGame from '../Snake/idnex'
 // import LineImg from './line'
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
@@ -151,7 +152,7 @@ export default class MyComponents extends Component{
                 <FlowStatus />
 
                 <br/>
-                {/* <LineImg/> */}
+                <SnakeGame/>
             </div>
         )
     }

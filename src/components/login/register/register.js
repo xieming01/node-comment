@@ -35,7 +35,7 @@ class Register extends Component {
         中间必须包括@符号。
         @之后需要连接大写字母[A-Z]、小写字母[a-z]、数字[0-9]、下滑线[_]、减号[-]及点号[.]，并需要重复一次至多次[+]。
         结尾必须是点号[.]连接2至4位的大小写字母[A-Za-z]{2,4}。 */
-        var pattern = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/
+        var pattern = /^([A-Za-z0-9_\-.])+[@]([A-Za-z0-9_\-.])+(\.[A-Za-z]){1,2}$/
         if (pattern.test(value)) {
             callback();
         } else {
