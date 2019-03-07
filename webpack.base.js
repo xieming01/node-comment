@@ -13,7 +13,9 @@ module.exports = {                                   //# webpack4.x必须定义
   },
   devServer: {                                          //# 配置webpack-dev-server
     contentBase: path.join(__dirname, 'dist'), 
-    historyApiFallback: true,          
+    // historyApiFallback:{
+    //   index:path.join(__dirname,'./dist/index.html')
+    // },     
     compress: true,
     port: 3000,
     inline: true,
