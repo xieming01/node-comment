@@ -41,6 +41,7 @@ export default class MultilevelFilter extends React.Component {
 
         };
     }
+    
     //为每个元素添加默认未选中select = false
     setFalseFlagToData = (data) => {
         for (let index = 0; index < data.length; index++) {
@@ -107,7 +108,7 @@ export default class MultilevelFilter extends React.Component {
 
     //判断有没有子级菜单 显示子二级菜单
     showChildrenAction = (itemData) => {
-        //当没有子集节点，清空下一级节点,
+        //当没有子集节点，清空下一级节点
         if (this.state.firstObj.value !== itemData.value) {
             this.setState({ firstObj: {}, secondObj: {} });
         }
@@ -138,14 +139,14 @@ export default class MultilevelFilter extends React.Component {
                             level: 3,
                             secondObj: secondObj,
                         });
-                    } else {
-                        // this.setState({secondObj:{}});
                     }
                 }
 
             }
         }
     }
+
+    //计算上边距的
     calculateAtIndex = (data) => {
         var tempAtIndex = 0;
         for (var index = 0; index < this.state.data.length; index++) {
@@ -255,7 +256,7 @@ export default class MultilevelFilter extends React.Component {
         }
         return tempFlag
     }
-
+     
     render() {
         var data = [];
         for (var index = 0; index < this.state.data.length; index++) {
@@ -305,7 +306,7 @@ export default class MultilevelFilter extends React.Component {
 
         return (
             // width: this.state.levelWidth + (120 * this.state.level - 1), 
-            <div style={{backgroundColor: "white" }} className='conta'>
+            <div style={{backgroundColor: "white" }} className='conta' id='con-ta'>
                 <Row>
                     <Col style={{ width: "140px" }}>
                         <div style={{ width: "100%", backgroundColor: "#fff", border: "solid 0px ", boxShadow: "0px 0px 7px gray" }}>

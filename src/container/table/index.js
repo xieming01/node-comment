@@ -9,6 +9,7 @@ import TableView from './TableView'
 import WyDatePicker from './WyDatePicker'
 import { netStandard } from './StandarConstant'
 import AlertList from './AlertList/index'
+import Map from './Map/index'
 import "./style.css"
 
 const Option = Select.Option
@@ -109,9 +110,24 @@ class MyTableList extends Component {
 
                 <AlertList />
 
+            <div className="amodule" style={{margin:"0px"}}>
+                    <div className="moduleHeader" style={{
+                    display:"flex",
+                    background:"rgba(255,255,255,0)"
+                    }}>
+                    地图
+                    </div>
+
+                    <div className="moduleBody" style={{
+                    background:"rgba(255,255,255,0)"
+                    }}>
+                    <Map height={13*30-10-70} mapData={{}}/>
+                    </div>
+                </div>                       
             </div>
         )
     }
 }
 
 export default withRouter(MyTableList)
+
