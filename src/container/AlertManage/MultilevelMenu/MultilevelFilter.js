@@ -107,7 +107,7 @@ export default class MultilevelFilter extends React.Component {
 
     //判断有没有子级菜单 显示子二级菜单
     showChildrenAction = (itemData) => {
-        //清空下一级节点
+        //当没有子集节点，清空下一级节点,
         if (this.state.firstObj.value !== itemData.value) {
             this.setState({ firstObj: {}, secondObj: {} });
         }
