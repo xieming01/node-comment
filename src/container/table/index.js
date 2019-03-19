@@ -69,7 +69,54 @@ class MyTableList extends Component {
  
     
     render() {
-        
+        const aa = {
+            'lineData':[
+                {
+                    coords: [[113.8953, 22.901, "0"],[113.5107, 23.2196, "0", "0"]],
+                    fromCity: "东莞",
+                    fromName: "东莞",
+                    lightColor: "rgba(255,255,255,0)",
+                    lineColor: "rgba(0,248,255,1)",
+                    toCity: "广州",
+                    toName: "广州",
+                    value: "0",
+                },{
+                    coords: [[113.8953, 22.901, "0"],[113.5107, 23.2196, "0", "0"]],
+                    fromCity: "东莞",
+                    fromName: "东莞",
+                    lightColor: "rgba(255,255,255,0)",
+                    lineColor: "rgba(0,248,255,1)",
+                    toCity: "广州",
+                    toName: "广州",
+                    value: "0",
+                }
+            ],
+            pointData: [{
+                city: "东莞",
+                color: "rgba(0,255,0,1)",
+                name: "东莞",
+                symbolSize: 10,
+                value: [113.8953, 22.901, "0"],
+                warning: "normal"
+            },{
+                city: "广州",
+                color: "rgba(0,255,0,1)",
+                name: "广州",
+                symbolSize: 10,
+                value: [113.5107, 23.2196, "0", "0"],
+                warning: "normal"
+            },{
+                city: "广州",
+                color: "rgba(0,255,0,1)",
+                name: "广州",
+                symbolSize: 10,
+                value:[113.5107, 23.2196, "0", "0"],
+                warning: "normal",
+            }],
+            region: "china",
+            unit: "b",
+            mapName: "222"
+        }
         return (
             <div style={{ "backgroundColor": "#fff", }}className="article">
                 <Row gutter={16}>
@@ -110,7 +157,7 @@ class MyTableList extends Component {
 
                 <AlertList />
 
-            <div className="amodule" style={{margin:"0px", background:'radial-gradient(rgba(1, 236, 115, 0.16) 0%, rgba(0, 0, 0, 0.8))'}}>
+            <div className="amodule" style={{margin:"0px", backgroundColor: '#893'}}>
                     <div className="moduleHeader" style={{
                     display:"flex",
                     background:"rgba(255,255,255,0)"
@@ -121,7 +168,7 @@ class MyTableList extends Component {
                     <div className="moduleBody" style={{
                     background:"rgba(255,255,255,0)"
                     }}>
-                    <Map height={13*30-10-70} mapData={{}}/>
+                    <Map height={13*30-10-70} mapData={aa}/>
                     </div>
                 </div>                       
             </div>
