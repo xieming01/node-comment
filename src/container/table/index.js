@@ -110,7 +110,7 @@ class MyTableList extends Component {
 
                 <AlertList />
 
-            <div className="amodule" style={{margin:"0px"}}>
+            <div className="amodule" style={{margin:"0px", background:'radial-gradient(rgba(1, 236, 115, 0.16) 0%, rgba(0, 0, 0, 0.8))'}}>
                     <div className="moduleHeader" style={{
                     display:"flex",
                     background:"rgba(255,255,255,0)"
