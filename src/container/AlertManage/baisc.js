@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Input, Select, Row, Col, message } from 'antd';
-// import ModalButton from './ModalButton'
+import ModalButton from './ModalButton'
 // import MultileveMenu from './MultilevelMenu/MultilevelFilter'
 // import PropTypes from "prop-types";
 const Option = Select.Option;
@@ -24,13 +24,15 @@ class Basic extends React.Component {
         if (typeof getInstance === 'function') {
             getInstance(this); // 在这里把this暴露给`parentComponent`
         }
+        localStorage.setItem('hasselectArr', '[]')
         this.state = {
             type: { "label": '手动选择阈值', "key": "value" },//告警类型
             obj: { "label": '网络', "key": "net" },//告警对象第一个选择框
             Netname: emergency_name.net[0],
             appName: emergency_name.app[0],
             nodeName: emergency_node.node[0],
-            selectValued: []
+            selectHasArr: [],
+            // selectValued: []
         }
     }
     // // 子组件声明自己需要使用 context
@@ -98,6 +100,10 @@ class Basic extends React.Component {
         });
         return obj
     }
+
+    selectDelete = (value) => {
+       localStorage.setItem('hasselectArr',value.length > 0 ? JSON.stringify(value) : '[]')
+    }
     render() {
         // const { cities } = this.state;
         const { getFieldDecorator } = this.props.form;
@@ -122,9 +128,9 @@ class Basic extends React.Component {
                     <Row>
                         <Col  >
 
-                        {/* <Form.Item
+                         <Form.Item
                     {...formItemLayout}
-                    label="添加用户组成员"
+                    label="添加成员"
                     >
                         {getFieldDecorator('group_members', {
                            initialValue: [] ,
@@ -132,14 +138,14 @@ class Basic extends React.Component {
                                 {required: false, message: ' '},
                                  ],
                         })(
-                            <Select display={"none"}   mode='multiple'>
-                            {/* {hostOptions} */}
-                            {/* </Select>      
+                            <Select    mode='multiple' open={false} onChange={this.selectDelete.bind(this)}>
+                        {/* //   {hostOptions}  */}
+                             </Select>      
                         )}
-                          <ModalButton  url='' selectedVD={this.selectValued} type="user">
+                          <ModalButton  selectedVD={this.selectValued} type="user">
                          
                          </ModalButton>  
-                    </Form.Item> */}  
+                    </Form.Item> 
                             <Form.Item
                                 {...formItemLayout}
 

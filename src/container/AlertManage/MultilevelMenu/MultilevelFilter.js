@@ -10,9 +10,9 @@ import {
 
 } from 'react-router-dom';
 import MultiLeveItem from "./MultiLeveItem";
-var data = [{"id":0, "value":"xiaohuang", "children":[]},
-{"id":1, "value":"xiaohuang", "children":[{"id":100,"value":"hhww","children":[]},{"id":101,"value":"hhww","children":[{"id":120,"value":"kkhhww0000","children":[]},{"id":121,"value":"hh000ww","children":[]}]}]},{"id":2, "value":"qqww","children":[]},
-{"id":3, "value":"qqww","children":[]},{"id":4, "value":"qqww","children":[]}];
+var data = [{"id":0, "value":"xiahuangz", "children":[]},
+{"id":1, "value":"xihuang1", "children":[{"id":100,"value":"hhwwvv","children":[]},{"id":101,"value":"hhww",
+"children":[{"id":120,"value":"kkh0000s","children":[]},{"id":121,"value":"hh0wwzs","children":[]}]}]},{"id":2, "value":"qqwwqwa","children":[]}];
 // var levelHeight = 35;
 export default class MultilevelFilter extends React.Component {
     constructor(props) {
@@ -41,14 +41,6 @@ export default class MultilevelFilter extends React.Component {
 
         };
     }
-    // changekeyValue = (dataArr) => {
-    //     for (let index = 0; index < dataArr.length; index++) {
-    //         const element = dataArr[index];
-    //         element.name = element.text;
-    //         element.key = element.value;
-    //     }
-    //     return dataArr;
-    // }
     //为每个元素添加默认未选中select = false
     setFalseFlagToData = (data) => {
         for (let index = 0; index < data.length; index++) {
@@ -69,6 +61,7 @@ export default class MultilevelFilter extends React.Component {
         }
     }
 
+    //点击确定
     handleMenuSumbitClick = () => {
         //取value为true的
         var tempArr = [];
@@ -90,7 +83,6 @@ export default class MultilevelFilter extends React.Component {
     //判断有没有子级菜单 显示子级菜单
     //取value为true的
     getSelectElement = (tempArr) => {
-        // var tempArr = [];
         for (let index = 0; index < this.state.data.length; index++) {
             var firstObj = this.state.data[index];
             this.getChildrenSelect(firstObj, tempArr);
@@ -98,15 +90,6 @@ export default class MultilevelFilter extends React.Component {
                 tempArr.push(firstObj);
             }
         }
-
-        // var tempResult = this.state.submitArr;
-        // for (let kk = 0; kk < tempArr.length; kk++) {
-        //     const element = tempArr[kk];
-        //     tempResult.push(element);
-        // }
-        // this.setState({
-        //     submitArr: tempResult,
-        // });
     }
     getChildrenSelect = (data, arr) => {
         if (data.children) {
@@ -124,6 +107,7 @@ export default class MultilevelFilter extends React.Component {
 
     //判断有没有子级菜单 显示子二级菜单
     showChildrenAction = (itemData) => {
+        //清空下一级节点
         if (this.state.firstObj.value !== itemData.value) {
             this.setState({ firstObj: {}, secondObj: {} });
         }
@@ -278,7 +262,7 @@ export default class MultilevelFilter extends React.Component {
             var obj = this.state.data[index];
             data.push(<div key={"firstDiv" + index}>
                 {/* 第一级 */}
-                <MultiLeveItem key={"firstItem" + index} showChildrenAction={this.showChildrenAction} didSelectRow={this.didSelectRow.bind(this)} itemData={obj}></MultiLeveItem>
+                <MultiLeveItem key={"firstItem" + index} showChildrenAction={this.showChildrenAction.bind(this)} didSelectRow={this.didSelectRow.bind(this)} itemData={obj}></MultiLeveItem>
             </div>)
         }
 
@@ -307,7 +291,7 @@ export default class MultilevelFilter extends React.Component {
                 const thirdObj = this.state.secondObj.children[index];
                 tempArray.push(
                     <div key={"third_div" + index}>
-                        {/* 第二s级 */}
+                        {/* 第三s级 */}
                         <MultiLeveItem key={"thirdItem" + index} didSelectRow={this.didSelectRow.bind(this)} itemData={thirdObj}></MultiLeveItem>
                     </div>);
             }
@@ -319,16 +303,15 @@ export default class MultilevelFilter extends React.Component {
                 </Col>);
         }
 
-
         return (
-            <div style={{ width: this.state.levelWidth + (120 * this.state.level - 1), backgroundColor: "white" }}>
+            // width: this.state.levelWidth + (120 * this.state.level - 1), 
+            <div style={{backgroundColor: "white" }} className='conta'>
                 <Row>
                     <Col style={{ width: "140px" }}>
                         <div style={{ width: "100%", backgroundColor: "#fff", border: "solid 0px ", boxShadow: "0px 0px 7px gray" }}>
-                            <div >
+                            <div className='conta-fir'>
                                 {data}
                             </div>
-
                             {/* 底部 button */}
                             <div style={{ width: "140px" }}>
                                 <Row>

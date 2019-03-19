@@ -15,8 +15,6 @@ import {
     // Popconfirm,
     Row, Col, Table,
 } from 'antd';
-// import { list } from 'postcss';
-// var listTable=[];
  
 export default class TableList extends React.Component {
     constructor(props) {
@@ -31,19 +29,23 @@ export default class TableList extends React.Component {
                 group_members: '胡彦祖',
                 group_name: 42,
               }],
-            selectRowKeys: [],
-            // dataSource:[],
             dataFilter: [],
             // listTable:[],
             Selected: [],
             currentPage: 1,
             dataCount:'',
             serachValue:"",
+            selectedRowKeys:[],
         }
     }
-    // componentDidMount =()=>{
-    //     this.fetchData();
-    // }
+     componentWillReceiveProps = () => {
+         
+        this.setState({
+            selectedRowKeys:JSON.parse(localStorage.getItem('hasselectArr')),
+            Selected: JSON.parse(localStorage.getItem('hasselectArr')),
+         })
+     }
+         
      
     onSelectChange = (selectedRowKeys) => {
         var add = [];
@@ -61,28 +63,6 @@ export default class TableList extends React.Component {
             Selected: add,
         })
     }
-    // fetchData = () => {
-    //     var url = this.props.url;
-    //     fetch(url, { method: 'GET', credentials: 'include' })
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             for (let index = 0; index < data.length; index++) {
-    //                 var data_group = data[index].group_members;
-    //                 data_group= data_group.replace("[","");
-    //                 data_group= data_group.replace("]","");
-    //                 data_group= data_group.replace(/'/g,"");
-    //                   data[index].group_members =  data_group;
-    //             }
-    //             this.setState({  
-    //                 data:data ,
-    //                 dataFilter:data ,
-                   
-    //             });
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         });
-    // }
      
     onSearchHandler = (value) => {
         // 搜索框回车后处理函数
@@ -179,11 +159,6 @@ export default class TableList extends React.Component {
             onChange: this.onSelectChange,
 
         };
-        // var listTable = [];
-        // for (let i = 0; i < this.state.data.length; i++) {
-        //     // listTable.map( this.state.data[i].props.children)
-        //     listTable.push(this.state.data[i].name)
-        // }
 
         // const hasSelected =selectedRowKeys.length >0;
         const columns = [{
