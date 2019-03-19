@@ -8,6 +8,7 @@ import LineView from './LineView'
 import TableView from './TableView'
 import WyDatePicker from './WyDatePicker'
 import { netStandard } from './StandarConstant'
+import AlertList from './AlertList/index'
 import "./style.css"
 
 const Option = Select.Option
@@ -104,6 +105,10 @@ class MyTableList extends Component {
                         <TableView ref={(constance) => { this.subTable = constance }} subTime={_.cloneDeep(this.state.allTime)} param={_.cloneDeep(this.state.param)}  />
                     </Col>
                 </Row>
+
+
+                <AlertList />
+
             </div>
         )
     }

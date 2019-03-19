@@ -6,7 +6,7 @@ import { themeOne } from '../echartTheme'
 // import DropList from '../DropList';
 // import { Divider } from 'antd';
 import contextList from '../ContextList'
-
+ 
 var xAxisData = [];
 var data1 = [];
 var data2 = [];

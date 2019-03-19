@@ -48,9 +48,13 @@ class CircleTest extends React.Component {
     }
 
     componentDidMount = () => {
-        var testData = '[{"id":1,"startFlag":1,"endFlag":0,"state":1,"name":"node1","parentID":"","childrenID":2,"branchs":[{"id":7,"name":"node7","state":1,"parentID":"1","childrenID":"3","branchs":[],"branchFlag":0,"point":{"x":0,"y":0}},{"id":9,"name":"node9","state":1,"parentID":"1","childrenID":"3","branchs":[],"branchFlag":0,"point":{"x":0,"y":0}}],"branchFlag":1,"point":{"x":0,"y":0}},' +
+        var testData = '[{"id":1,"startFlag":1,"endFlag":0,"state":1,"name":"node1","parentID":"","childrenID":2,\
+            "branchs":[{"id":7,"name":"node7","state":1,"parentID":"1","childrenID":"3","branchs":[],\
+            "branchFlag":0,"point":{"x":0,"y":0}},{"id":9,"name":"node9","state":1,"parentID":"1","childrenID":"3","branchs":[],\
+            "branchFlag":0,"point":{"x":0,"y":0}}],"branchFlag":1,"point":{"x":0,"y":0}},' +
             '{"id":2,"startFlag":0,"endFlag":0,"state":2,"name":"node2","parentID":"1","childrenID":3,"branchs":[],"branchFlag":0,"point":{"x":0,"y":0}},' +
-            '{"id":3,"startFlag":0,"endFlag":0,"state":1,"name":"node3","parentID":"2","childrenID":4,"branchs":[{"id":10,"name":"node10","parentID":"3","state":1,"childrenID":"5","branchs":[],"branchFlag":0,"point":{"x":0,"y":0}}],"branchFlag":1,"point":{"x":0,"y":0}},' +
+            '{"id":3,"startFlag":0,"endFlag":0,"state":1,"name":"node3","parentID":"2","childrenID":4,"branchs":[{"id":10,"name":"node10","parentID":"3",\
+            "state":1,"childrenID":"5","branchs":[],"branchFlag":0,"point":{"x":0,"y":0}}],"branchFlag":1,"point":{"x":0,"y":0}},' +
             '{"id":4,"startFlag":0,"endFlag":0,"state":3,"name":"node4","parentID":"3","childrenID":5,"branchs":[],"branchFlag":0,"point":{"x":0,"y":0}},' +
             '{"id":5,"startFlag":0,"endFlag":0,"state":1,"name":"node5","parentID":"4","childrenID":6,"branchs":[],"branchFlag":0,"point":{"x":0,"y":0}},' +
             '{"id":6,"startFlag":0,"endFlag":0,"state":1,"name":"node6","parentID":"5","childrenID":"","branchs":[],"branchFlag":0,"point":{"x":0,"y":0}},'+
@@ -77,7 +81,7 @@ class CircleTest extends React.Component {
         }
 
         //找分支坐标
-        for (let index = 0; index < testArray.length; index++) {
+     for (let index = 0; index < testArray.length; index++) {
             nodeObj = testArray[index];
             if (nodeObj.branchFlag === 1) {
                 //说明有分支
@@ -293,45 +297,46 @@ class CircleTest extends React.Component {
     /**
      * 点击事件
      * event：canvas内包含坐标
-     */
-    approveMouseDonwn = (event) => {
-        //取到鼠标点击canvas的位置
-        var x = event.pageX - this.canvas.getBoundingClientRect().left;
-        var y = event.pageY - this.canvas.getBoundingClientRect().top;
-        for (let index = 0; index < this.state.allPointArray.length; index++) {
-            const nodeObj = this.state.allPointArray[index];
-            if (Math.abs(x - nodeObj.point.x) < Radius && Math.abs(y - nodeObj.point.y) < Radius) {
-                //说明点中了结点 结点变色 取出结点id 
-                this.startDrawCircleAndLineAction(this.state.data, nodeObj.id)
-            }
-        }
-    }
-    approveMouseUp = (event) => {
-        //重新绘制canvas
-        //取到鼠标点击canvas的位置
-        var x = event.pageX - this.canvas.getBoundingClientRect().left;//this.canvas.getBoundingClientRect().left表示当前画布距离屏幕左边的距离,event.pageX代表当前页面的x轴坐标
-        var y = event.pageY - this.canvas.getBoundingClientRect().top;
-        for (let index = 0; index < this.state.allPointArray.length; index++) {
-            const nodeObj = this.state.allPointArray[index];
-            if (Math.abs(x - nodeObj.point.x) < Radius && Math.abs(y - nodeObj.point.y) < Radius) {
-                //说明点中了结点 结点变色 取出结点id 
-                this.startDrawCircleAndLineAction(this.state.data, 0)
-            }
-        }
-    }
+    //  */
+    // approveMouseDonwn = (event) => {
+    //     //取到鼠标点击canvas的位置
+    //     var x = event.pageX - this.canvas.getBoundingClientRect().left;
+    //     var y = event.pageY - this.canvas.getBoundingClientRect().top;
+    //     for (let index = 0; index < this.state.allPointArray.length; index++) {
+    //         const nodeObj = this.state.allPointArray[index];
+    //         if (Math.abs(x - nodeObj.point.x) < Radius && Math.abs(y - nodeObj.point.y) < Radius) {
+    //             //说明点中了结点 结点变色 取出结点id 
+    //             this.startDrawCircleAndLineAction(this.state.data, nodeObj.id)
+    //         }
+    //     }
+    // }
+    // approveMouseUp = (event) => {
+    //     //重新绘制canvas
+    //     //取到鼠标点击canvas的位置
+    //     var x = event.pageX - this.canvas.getBoundingClientRect().left;//this.canvas.getBoundingClientRect().left表示当前画布距离屏幕左边的距离,event.pageX代表当前页面的x轴坐标
+    //     var y = event.pageY - this.canvas.getBoundingClientRect().top;
+    //     for (let index = 0; index < this.state.allPointArray.length; index++) {
+    //         const nodeObj = this.state.allPointArray[index];
+    //         if (Math.abs(x - nodeObj.point.x) < Radius && Math.abs(y - nodeObj.point.y) < Radius) {
+    //             //说明点中了结点 结点变色 取出结点id 
+    //             this.startDrawCircleAndLineAction(this.state.data, 0)
+    //         }
+    //     }
+    // }
 
-    clickMe = (event) => {
-        const context = this.canvas.getContext('2d');
-        context.clearRect(415, 10, 2 * Radius, 2 * Radius);
-    }
+    // clickMe = (event) => {
+    //     const context = this.canvas.getContext('2d');
+    //     context.clearRect(415, 10, 2 * Radius, 2 * Radius);
+    // }
 
     render() {
         return (
             <div>
-                <canvas onMouseDown={this.approveMouseDonwn.bind(this)} 
+                <canvas 
+                // onMouseDown={this.approveMouseDonwn.bind(this)} 
                     style={{ "margainTop": "100px" }}
-                    onMouseUp={this.approveMouseUp.bind(this)}
-                    onMouseLeave={this.approveMouseUp.bind(this)}
+                    // onMouseUp={this.approveMouseUp.bind(this)}
+                    // onMouseLeave={this.approveMouseUp.bind(this)}
                     width="800"
                     height="400"
                     ref={(c) => {
@@ -348,13 +353,7 @@ class CircleTest extends React.Component {
 
 
 class FlowStatus extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            test: "我是谁",
-        }
-    }
-    
+ 
 
     render() {
         return (

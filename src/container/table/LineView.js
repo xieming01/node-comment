@@ -90,19 +90,20 @@ class LineView extends Component {
         this.setState({
             dropListInfo: {
                 dropData: contextList(info),
-                dropPosition: { x: record.event.offsetX + "px", y: record.event.offsetY   + "px" },
+                dropPosition: localStorage.getItem('position') ? JSON.parse(localStorage.getItem('position')) : {x: 0, y: 0},
                 is_exist: true
             }
         })
     }
     render() {
         return (
-            <div className="amodule">
+            <div className="amodule--aa">
                 <div className="moduleHeader" >
                     <h4>线性表</h4>
                     <Divider/>
                 </div>
-                <div className="moduleBody">
+                <div className='con-tab'>
+                <div className="moduleBody" >
                     <WySpin isSpining={this.state.isSpining}>
                         <Line
                             xData={this.state.xData ? this.state.xData : []}
@@ -115,6 +116,7 @@ class LineView extends Component {
                     </WySpin>
                 </div>
                 <div className="module-Body">
+                    
                     <Pie 
                         className='MyPie'
                         pieData={
@@ -130,12 +132,15 @@ class LineView extends Component {
                         onContextmenu={this.tableContextmenu}
                         dropListInfo={_.cloneDeep(this.state.dropListInfo)}
                     />
-
+                </div>
+                    
+                <div>
                     <Bar />
+                </div>
                 </div>
             </div>
         )
     }
 }
 
-export default withRouter(LineView)
+export default LineView

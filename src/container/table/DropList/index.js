@@ -37,7 +37,7 @@ class DropList extends Component {
                         className="drcontainer"
                         style={{
                             left: this.state.dropPosition.x,
-                            top: this.state.dropPosition.y  
+                            top: ((parseInt(this.state.dropPosition.y,10) + 480) + 'px')
                         }}
                     >
                         <ul

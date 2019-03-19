@@ -3,6 +3,7 @@ import { Table,Divider } from 'antd'
 import _ from 'lodash'
 import DropList from '../DropList'
 import sortColumns from '../TableSort'
+import MultilevelFilter from '../../AlertManage/MultilevelMenu/MultilevelFilter'
 
 const columns = [{
     title: 'Name',
@@ -17,11 +18,11 @@ const columns = [{
     title: 'Address',
     dataIndex: 'address',
     key: 'address',
-  }, {
-    title: 'Tags',
-    key: 'tags',
+  },   {
+    title: '分类',
     dataIndex: 'tags',
-  }, {
+    key: 'tags',
+},{
     title: 'Action',
     key: 'action',
     render: (text, record) => (
@@ -32,7 +33,6 @@ const columns = [{
       </span>
     ),
   }]
-  
   const data = [{
     key: '1',
     name: 'John Brown',
@@ -62,7 +62,8 @@ class MyTable extends Component {
             onTableContextmenu: function () { },
             dropPosition: { x: "0px", y: "0px" },
             dropData: [],
-            isexist: false
+            isexist: false,
+            filterDropdownVisible:false
         }
     }
     componentDidMount() {
@@ -121,7 +122,88 @@ class MyTable extends Component {
         }
     }
 
+     /**
+     * 自定义筛选确定事件
+     */
+    handleMenuSumbitClick=(values)=>{
+        //  console.log(values);
+        var currentPage = 1;
+        var idArr = [];
+        for (let index = 0; index < values.length; index++) {
+            const tempObj = values[index];
+            idArr.push(tempObj.value);
+        }
+        // var category = "category="+idArr.join(",");
+        // var url = `/cmdb/host/list?page=${currentPage}`;
+        // url = `${url}&${category}`;
+
+        //  this.props.history.push(url);
+         this.setState({
+            filterDropdownVisible:false,
+         });
+    }
+    /**
+     * 自定义筛选重置事件
+     */
+    handleMenuResetClick=(values)=>{
+        // console.log(values);
+        // var url = `/cmdb/host/list?page=${1}`;
+        //  this.props.history.push(url);
+         this.setState({
+            filterDropdownVisible:false,
+         });
+    }
+    
+
     render() {
+        const columns = [{
+            title: 'Name',
+            dataIndex: 'name',
+            key: 'name',
+            render: text => <a  >{text}</a>,
+          }, {
+            title: 'Age',
+            dataIndex: 'age',
+            key: 'age',
+          }, {
+            title: 'Address',
+            dataIndex: 'address',
+            key: 'address',
+          },   {
+            title: '分类',
+            dataIndex: 'tags',
+            key: 'tags',
+            // 接着定义filterMultiple, onFilter, sorter
+            // sorter: (a, b) => a.category - b.category,
+            // filters: this.state.categoryFilters,
+            // filterMultiple: true,            
+            // filteredValue: this.state.category ? this.state.category.toString().split(',') : [],
+            // filterIcon: <Icon type="default" style={{ color: this.state.filtered ? '#108ee9' : '#aaa' }} />,
+        
+            filterDropdown: (
+                <div className="custom-filter-dropdown">
+                    
+                        <MultilevelFilter  handleMenuSumbitClick={this.handleMenuSumbitClick.bind(this)} handleMenuResetClick={this.handleMenuResetClick.bind(this)}></MultilevelFilter>
+                </div>
+            ),
+            // onFilter: (value, record) => record.category.indexOf(value) === 0,
+            filterDropdownVisible:this.state.filterDropdownVisible,
+            onFilterDropdownVisibleChange: (visible) => {
+                this.setState({
+                  filterDropdownVisible: visible,
+                });
+              },
+        },{
+            title: 'Action',
+            key: 'action',
+            render: (text, record) => (
+              <span>
+                <a  >Invite {record.name}</a>
+                <Divider type="vertical" />
+                <a  >Delete</a>
+              </span>
+            ),
+          }]
         return (
             <div>
                 <Table
@@ -142,21 +224,23 @@ class MyTable extends Component {
                             onClick: () => { this.state.onTableClick(record) },
                             onContextMenu: (event) => {
                                 let e = event || window.event
-                                const xPosition = e.pageX
-                                const yPosition = e.pageY
+                                const xPosition = e.clientX
+                                const yPosition = e.clientY
                                 const position = {
                                     x: xPosition,
                                     y: yPosition
                                 }
                                 const dom = e.target
-                                this.state.onTableContextmenu(record, position, dom)
+                                this.props.onTableContextmenu(record, position, dom)
+                                // localStorage.setItem('position',JSON.stringify(position))
+                                // this.setState({dropPosition: position })
                             }
                         }
                     }
                     }>
                 </Table>
                 <DropList
-                    dropPosition={_.cloneDeep(this.state.dropPosition)}
+                    dropPosition={_.cloneDeep( this.state.dropPosition)}
                     dropData={_.cloneDeep(this.state.dropData)}
                     isexist={_.cloneDeep(this.state.isexist)}
                 />

@@ -7,25 +7,24 @@ import getTime from '../../tools/getTime'
 import './all.less'
 localStorage.setItem('img_url_path','127.0.0.1:5000')
 var path = require('path')
-require('/home/xie/webpack/react-project/node_modules/antd/lib/pagination/style/index.css')
+// require('/home/xie/webpack/react-project/node_modules/antd/lib/pagination/style/index.css')
 // var keywordArr = {'0': '置顶','1': '分享','2': '问答','3': '精华'}
 var pageSize = 15
+ 
 class All extends Component {
     constructor(props){
         super(props)
+        // const aa = '000'
         this.state={
-            currentPage: 1
+            currentPage: 1,
+
         }
     }
    componentDidMount = () => {
        this.props.getList('all')
    }
 
-   componentWillReceiveProps = (nextProps) => {
-        if(this.props.data.result === nextProps.data.result) {
-            return false
-        }
-   }
+
    pageChnage = (page) => {
         this.setState({
             currentPage: page
@@ -56,7 +55,7 @@ class All extends Component {
    }
     render() {
         var listItem = []
-        var { currentPage } = this.state
+        var { currentPage,aa } = this.state
         var listArr =  (this.props.data.result && this.props.data.result.length) ? this.props.data.result :[]
         var img_url_path = localStorage.getItem('img_url_path')
         // var pageNum = ((listArr.length + 1)/10 === 0)&&listArr.length? parseInt((listArr.length + 1)/10, 10) :  parseInt((listArr.length + 1)/10, 10) +1;

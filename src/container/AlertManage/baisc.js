@@ -1,5 +1,7 @@
 import React from 'react';
 import { Form, Input, Select, Row, Col, message } from 'antd';
+// import ModalButton from './ModalButton'
+// import MultileveMenu from './MultilevelMenu/MultilevelFilter'
 // import PropTypes from "prop-types";
 const Option = Select.Option;
 //告警类型所对应的供选择项
@@ -27,7 +29,8 @@ class Basic extends React.Component {
             obj: { "label": '网络', "key": "net" },//告警对象第一个选择框
             Netname: emergency_name.net[0],
             appName: emergency_name.app[0],
-            nodeName: emergency_node.node[0]
+            nodeName: emergency_node.node[0],
+            selectValued: []
         }
     }
     // // 子组件声明自己需要使用 context
@@ -76,6 +79,12 @@ class Basic extends React.Component {
         }
        
     }
+      selectValued = (newValues) => {
+        var userCheck= this.props.form.getFieldValue('group_members');
+        if(userCheck !== newValues.newValues){
+            this.props.form.setFieldsValue({"group_members":newValues.newValues});
+        } 
+    }
     onSubmit=()=>{
         let obj ={}
         this.props.form.validateFields((err, fieldsValue) => {
@@ -112,6 +121,25 @@ class Basic extends React.Component {
                 <Form>
                     <Row>
                         <Col  >
+
+                        {/* <Form.Item
+                    {...formItemLayout}
+                    label="添加用户组成员"
+                    >
+                        {getFieldDecorator('group_members', {
+                           initialValue: [] ,
+                            rules: [
+                                {required: false, message: ' '},
+                                 ],
+                        })(
+                            <Select display={"none"}   mode='multiple'>
+                            {/* {hostOptions} */}
+                            {/* </Select>      
+                        )}
+                          <ModalButton  url='' selectedVD={this.selectValued} type="user">
+                         
+                         </ModalButton>  
+                    </Form.Item> */}  
                             <Form.Item
                                 {...formItemLayout}
 
@@ -170,7 +198,7 @@ class Basic extends React.Component {
                                                 </Select> */}
                                             {/* <Form layout="inline"> */}
                                             <Col span={4}>
-                                           
+                                           {/* <MultileveMenu /> */}
                                             <Form.Item
                                             >
                                                 {getFieldDecorator('obj', {

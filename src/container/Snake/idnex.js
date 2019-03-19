@@ -6,6 +6,7 @@ class SnakeGame extends Component {
    componentDidMount = () =>{
     let elements = [];
     (function () {
+    //初始化实物x,y,width,height,color
      function Food(x,y,width,height,color) {
          //横纵坐标
          this.x = x;
@@ -54,6 +55,10 @@ class SnakeGame extends Component {
           //把Food暴露给Window,外部可以使用
           window.Food = Food;
     }());
+
+
+
+
     //自调用函数---小蛇
    (function () {
        var elements = [];//存放小蛇的每个身体部分
@@ -158,6 +163,11 @@ class SnakeGame extends Component {
        //把Snake暴露给window,外部可以访问
        window.Snake = Snake;
      }());
+
+
+
+
+
     (function () {
         var that = null; //该变量的目的就是为了保存游戏Game的实例对象-------
         //游戏的构造函数
@@ -201,13 +211,13 @@ class SnakeGame extends Component {
              if (headX < 0 || headX > maxX) {
                //撞墙了,停止定时器
                clearInterval(timeId);
-               alert("游戏结束");
+           
              }
              //纵坐标
              if (headY < 0 || headY > maxY) {
                //撞墙了,停止定时器
                clearInterval(timeId);
-               alert("游戏结束");
+              //  alert("游戏结束");
              }
            }.bind(that), 150);
          };

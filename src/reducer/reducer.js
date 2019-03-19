@@ -19,7 +19,7 @@ const reducerDetail = (state=defaultDetailState,action) =>{
         case Started:
             return { loading:true }
         case Success:
-            return { oading:false,result: action.result }
+            return { loading:false,result: action.result }
         case Failure:
             return { loading:false,error: action.error }
         default:
