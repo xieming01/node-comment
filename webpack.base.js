@@ -22,6 +22,7 @@ module.exports = {                                   //# webpack4.x必须定义
     hot: true,
     publicPath: '/',
     // open: true,
+    host: '172.18.154.197'
   },
 
   resolve: {

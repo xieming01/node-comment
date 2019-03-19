@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "chrom",
-            "url": "http://127.0.0.1:3000",
+            "url": "http://120.79.10.3:3000",
             "webRoot": "${workspaceFolder}/index.html",
         }
     ]

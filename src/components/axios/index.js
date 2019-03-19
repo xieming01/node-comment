@@ -4,7 +4,7 @@ import { message } from 'antd'
 
 const myAxiosPost = (url,data,callback) => {
     const postData = Qs.stringify(data.info)
-    const wholeUrl = `http://127.0.0.1:5000${url}`
+    const wholeUrl = `http://120.79.10.3:5000${url}`
     axios({
         url: wholeUrl,
         data: postData,
@@ -29,7 +29,7 @@ const myAxiosPost = (url,data,callback) => {
 }
 const myAxiosGet = (url,callback) => {
     // const postData = Qs.stringify(data.info)
-    const wholeUrl = `http://127.0.0.1:5000${url}`
+    const wholeUrl = `http://120.79.10.3:5000${url}`
     axios({
         url: wholeUrl,
         // data: postData,

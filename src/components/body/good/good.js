@@ -5,7 +5,7 @@ import React, { Component } from 'react'
  import { getList } from '../../../action/action'
  import getTime from '../../tools/getTime'
 import './good.less'
-localStorage.setItem('img_url_path','127.0.0.1:5000')
+localStorage.setItem('img_url_path','120.79.10.3:5000')
 var path = require('path')
 var pageSize = 15
 class Good extends Component {

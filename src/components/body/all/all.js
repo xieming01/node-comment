@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { getList } from '../../../action/action'
 import getTime from '../../tools/getTime'
 import './all.less'
-localStorage.setItem('img_url_path','127.0.0.1:5000')
+localStorage.setItem('img_url_path','120.79.10.3:5000')
 var path = require('path')
 // require('/home/xie/webpack/react-project/node_modules/antd/lib/pagination/style/index.css')
 // var keywordArr = {'0': '置顶','1': '分享','2': '问答','3': '精华'}
